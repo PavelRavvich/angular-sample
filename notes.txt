@@ -34,3 +34,6 @@ export class UserComponent {
 }
 
 4. Для использования данных внутри верстки user.component.html используется {{ user.name }}
+
+
+https://randomuser.me/api/?inc=gender,name,location&results=8&nat=gb
