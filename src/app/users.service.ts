@@ -1,17 +1,16 @@
 import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class UsersService {
 
-  constructor(private http: Http) {
+  constructor(private http: HttpClient) {
   }
 
   getUsers() {
     return this.http.get('https://randomuser.me/api/?inc=gender,name,location&results=8&nat=gb')
-      .map(response => response.json())
-      .map(response => response.results)
+      .map(response => response['results'])
       .map(users => {
         return users.map(u => {
           return {
