@@ -1,0 +1,36 @@
+Создание компонента
+
+1. Регестрируем новый компонент в app.module.ts в блоке declarations
+2. Создаем папку с именем компонента в папке app
+3. Создаем имя_компонента.component.ts и в нем @Component типо:
+@Component({
+  selector: 'app-user', //тег
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.scss']
+})
+
+4. Создаем html с версткой компонента
+5. Добавляем компонент в app.component.html используя selector из @Component
+6. Используем зарегестрированый селектор app-user в app.component.html как тег
+
+Передача данных в компонент.
+
+1. Все данные в приложении приходят из app.component.ts
+
+export class AppComponent {
+  users = [
+    {name: 'WFM1'},
+    {name: 'WFM2'}
+  ];
+}
+
+2. В app.component.html пример получения и обхода users в цикле
+
+<app-user *ngFor="let user of users" [user]="user"></app-user>
+
+3. для деклорации объектов типа user в user.component.ts
+export class UserComponent {
+  @Input() user;
+}
+
+4. Для использования данных внутри верстки user.component.html используется {{ user.name }}
